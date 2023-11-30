@@ -1,7 +1,5 @@
 <?php
 
-declare(strict_types=1);
-
 namespace Tropa\Controller;
 
 use Laminas\Mvc\Controller\AbstractActionController;
@@ -9,9 +7,18 @@ use Laminas\View\Model\ViewModel;
 
 class SetorController extends AbstractActionController
 {
+    private $table;
+
+    public function __construct($table)
+    {
+        $this->table = $table;
+    }
+
     public function indexAction()
     {
-        return new ViewModel();
+        return new ViewModel(
+            ['models' => $this->table->fetchAll()]
+        );
     }
 
     /**

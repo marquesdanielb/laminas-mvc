@@ -1,2 +1,47 @@
 <?php
-echo __FILE__;
+$title = 'Setores';
+$this->headTitle($title);
+?>
+<h1><?= $this->escapeHtml($title) ?></h1>
+
+<p>
+    <a href="<?= $this->url(
+        'tropa',
+        [
+            'action' => 'edit',
+            'controller' => 'setor'
+        ]
+    ) ?>">Novo Setor</a>
+</p>
+
+<table class="table">
+    <tr>
+        <th>Código</th>
+        <th>Nome</th>
+        <th>&nbsp;</th>
+    </tr>
+    <?php foreach($this->models as $model): ?>
+        <tr>
+            <td><?= $model->codigo ?></td>
+            <td><?= $this->escapeHtml($model->nome) ?></td>
+            <td>
+                <a href="<?= $this->url('tropa'),
+                        [
+                            'action' => 'edit',
+                            'controller' => 'setor',
+                            'key' => $model->codigo
+                        ] ?>">
+                    Editar
+                </a>
+                <a href="<?= $this->url('tropa'),
+                        [
+                            'action' => 'delete',
+                            'controller' => 'setor',
+                            'key' => $model->codigo
+                        ] ?>">
+                    Remover
+                </a>
+            </td>
+        </tr>
+        <?php endforeach; ?>
+</table>

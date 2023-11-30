@@ -32,7 +32,10 @@ return [
         ],
         'factories' => [
             Controller\IndexController::class => InvokableFactory::class,
-            Controller\SetorController::class => InvokableFactory::class
+            Controller\SetorController::class => function($sm){
+                $table = $sm->get(SetorTable::class);
+                return new Controller\SetorController($table);
+            }
         ],
     ],
     'view_manager' => [
