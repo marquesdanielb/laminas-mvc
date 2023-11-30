@@ -13,5 +13,16 @@
  */
 
 return [
-    // ...
+    'db' => [
+        'driver' => 'Pdo',
+        'dsn' => 'mysql:dbname=corps;hostname=localhost:8080',
+        'driver_options' => [
+            PDO::MYSQL_ATTR_INIT_COMMAND => 'SET NAMES \'UTF8\''
+        ],
+    ],
+    'service_manager' => [
+        'factories' => [
+            'Laminas\Db\Adapter' => 'Laminas\Db\Adapter\AdapterServiceFactory',
+        ],
+    ],
 ];
