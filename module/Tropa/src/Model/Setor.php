@@ -20,7 +20,7 @@ class Setor
     public function exchangeArray(array $data)
     {
         foreach ($data as $attribute => $value) {
-            //$this->attribute = $value;
+            $this->$attribute = $value;
         }
     }
 }
